@@ -29,7 +29,7 @@ class HashMap extends Structure
         $result = $this->conn->hSet($this->getRedisKey($key), $field, $value);
 
         if (!$result) {
-            throw new Exception("Unable to set value for {$this->getRedisKey($key)}");
+            throw new Exception("Unable to set value '{$value}' for field '{$field}' at key '{$this->getRedisKey($key)}'");
         }
 
         return $result;

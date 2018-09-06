@@ -15,7 +15,7 @@ class Client
         $this->conn = new \Redis();
 
         if (!$this->conn->connect($host, $port, $timeout) || !$this->conn->select($db)) {
-            throw new Exception('Unable connect to Redis');
+            throw new Exception("Unable connect to Redis on {$host}:{$port}");
         }
     }
 
