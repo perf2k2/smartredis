@@ -7,12 +7,31 @@ use perf2k2\smartredis\Structure;
 
 class HashMap extends Structure
 {
+    protected $conn;
+    protected $name;
+
+    public function __construct(Redis $conn, string $name)
+    {
+        $this->conn = $conn;
+        $this->name = $name;
+    }
+
     public function add(string $key, array $data): void
     {
 
     }
 
     public function get(string $key): array
+    {
+        return [];
+    }
+
+    public function getValue(string $key, string $field): array
+    {
+        return [];
+    }
+
+    public function getAll(): array
     {
         return [];
     }

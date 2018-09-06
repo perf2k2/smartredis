@@ -3,22 +3,20 @@ declare(strict_types=1);
 
 namespace perf2k2\smartredis;
 
+use perf2k2\smartredis\structures\HashMap;
+
 class Client
 {
     protected $conn;
-    protected $dbs = [];
+    protected $structures = [];
 
-    public function __construct(string $host, int $port = 6379, float $timeout = 0.0)
+    public function __construct(string $host, int $db, int $port = 6379, float $timeout = 0.0)
     {
 
     }
 
-    public function getDb(int $index): Database
+    public function getHashMap(string $name): HashMap
     {
-        if (!array_key_exists($index, $this->dbs)) {
-            $this->dbs[$index] = new Database($index);
-        }
-
-        return $this->dbs[$index];
+        return new HashMap($this->conn, $name);
     }
 }
