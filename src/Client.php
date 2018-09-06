@@ -13,12 +13,12 @@ class Client
 
     }
 
-    public function getDb(string $name): Database
+    public function getDb(int $index): Database
     {
-        if (!array_key_exists($name, $this->dbs)) {
-            $this->dbs[$name] = new Database($name);
+        if (!array_key_exists($index, $this->dbs)) {
+            $this->dbs[$index] = new Database($index);
         }
 
-        return $this->dbs[$name];
+        return $this->dbs[$index];
     }
 }

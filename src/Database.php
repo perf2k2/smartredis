@@ -7,17 +7,17 @@ use perf2k2\smartredis\structures\HashMap;
 
 class Database
 {
-    protected $name;
+    protected $index;
     protected $structures;
 
-    public function __construct(string $name)
+    public function __construct(int $index)
     {
-        $this->name = $name;
+        $this->index = $index;
     }
 
-    public function getName(): string
+    public function getName(): int
     {
-        return $this->name;
+        return $this->index;
     }
 
     public function getStructure(string $name)
