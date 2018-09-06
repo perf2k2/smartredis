@@ -1,0 +1,22 @@
+{
+  "name": "perf2k2/smartredis",
+  "description": "Redis wrapper for working with redis like with php types",
+  "version": "0.0.1",
+  "type": "library",
+  "keywords": ["redis", "redis wrapper"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Romannikov Nikita",
+      "email": "perf2k2@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "7.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "perf2k2\\smartredis\\": "src/"
+    }
+  }
+}
