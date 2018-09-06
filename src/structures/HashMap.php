@@ -21,14 +21,19 @@ class HashMap extends Structure
 
     }
 
+    public function update(string $key, string $field, $value): void
+    {
+
+    }
+
     public function get(string $key): array
     {
         return [];
     }
 
-    public function getValue(string $key, string $field): array
+    public function getValue(string $key, string $field)
     {
-        return [];
+        return null;
     }
 
     public function getAll(): array
