@@ -12,7 +12,11 @@ class Client
 
     public function __construct(string $host, int $db, int $port = 6379, float $timeout = 0.0)
     {
+        $this->conn = new \Redis();
 
+        if (!$this->conn->connect($host, $port, $timeout) || !$this->conn->select($db)) {
+            throw new Exception('Unable connect to Redis');
+        }
     }
 
     public function getHashMap(string $name): HashMap

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace perf2k2\smartredis\structures;
 
+use perf2k2\smartredis\Exception;
 use perf2k2\smartredis\Structure;
 
 class HashMap extends Structure
@@ -10,39 +11,47 @@ class HashMap extends Structure
     protected $conn;
     protected $name;
 
-    public function __construct(Redis $conn, string $name)
+    public function __construct(\Redis $conn, string $name)
     {
         $this->conn = $conn;
         $this->name = $name;
     }
 
-    public function add(string $key, array $data): void
+    public function setAll(string $key, array $data): void
     {
-
+        foreach ($data as $field => $value) {
+            $this->set($key, $field, $value);
+        }
     }
 
-    public function update(string $key, string $field, $value): void
+    public function set(string $key, string $field, $value): int
     {
+        $result = $this->conn->hSet($this->getRedisKey($key), $field, $value);
 
+        if (!$result) {
+            throw new Exception("Unable to set value for {$this->getRedisKey($key)}");
+        }
+
+        return $result;
     }
 
     public function get(string $key): array
     {
-        return [];
+        return $this->conn->hGetAll($this->getRedisKey($key));
     }
 
-    public function getValue(string $key, string $field)
+    public function getValue(string $key, string $field): string
     {
-        return null;
-    }
-
-    public function getAll(): array
-    {
-        return [];
+        return $this->conn->hGet($this->getRedisKey($key), $field);
     }
 
     public function contains(string $key, string $field = null): bool
     {
-        return true;
+        return $this->conn->hExists($this->getRedisKey($key), $field);
+    }
+
+    protected function getRedisKey(string $key): string
+    {
+        return "{$this->name}:{$key}";
     }
 }
