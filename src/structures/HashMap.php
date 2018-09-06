@@ -47,7 +47,11 @@ class HashMap extends Structure
 
     public function contains(string $key, string $field = null): bool
     {
-        return $this->conn->hExists($this->getRedisKey($key), $field);
+        if ($field === null) {
+            return (bool)$this->conn->exists($this->getRedisKey($key));
+        }
+
+        return (bool)$this->conn->hExists($this->getRedisKey($key), $field);
     }
 
     protected function getRedisKey(string $key): string
