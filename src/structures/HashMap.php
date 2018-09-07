@@ -31,7 +31,12 @@ class HashMap extends Structure
         return $this->conn->hGetAll($this->getRedisKey($key));
     }
 
-    public function getValue(string $key, string $field): string
+    /**
+     * @param string $key
+     * @param string $field
+     * @return string|bool
+     */
+    public function getValue(string $key, string $field)
     {
         return $this->conn->hGet($this->getRedisKey($key), $field);
     }
