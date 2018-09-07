@@ -8,15 +8,6 @@ use perf2k2\smartredis\Structure;
 
 class HashMap extends Structure
 {
-    protected $conn;
-    protected $name;
-
-    public function __construct(\Redis $conn, string $name)
-    {
-        $this->conn = $conn;
-        $this->name = $name;
-    }
-
     public function setAll(string $key, array $data): void
     {
         foreach ($data as $field => $value) {
