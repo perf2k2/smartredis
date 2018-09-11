@@ -12,7 +12,8 @@
     }
   ],
   "require": {
-    "php": "7.*"
+    "php": ">=7.1",
+    "ext-redis": "*"
   },
   "autoload": {
     "psr-4": {
