@@ -14,8 +14,8 @@ abstract class Structure
         $this->name = $name;
     }
 
-    public function clear(): void
+    public function clear(): int
     {
-        $this->conn->del($this->name);
+        return $this->conn->del($this->name);
     }
 }
