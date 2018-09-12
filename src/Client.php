@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace perf2k2\smartredis;
 
-use perf2k2\smartredis\structures\HashMap;
-use perf2k2\smartredis\structures\Record;
+use perf2k2\smartredis\structures\HashMapStructure;
+use perf2k2\smartredis\structures\StringStructure;
 
 class Client
 {
@@ -20,13 +20,13 @@ class Client
         }
     }
 
-    public function getHashMap(string $name): HashMap
+    public function getHashMap(string $name): HashMapStructure
     {
-        return new HashMap($this->conn, $name);
+        return new HashMapStructure($this->conn, $name);
     }
 
-    public function getRecord(string $name): Record
+    public function getString(string $name): StringStructure
     {
-        return new Record($this->conn, $name);
+        return new StringStructure($this->conn, $name);
     }
 }

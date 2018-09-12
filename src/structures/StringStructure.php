@@ -6,7 +6,7 @@ namespace perf2k2\smartredis\structures;
 use perf2k2\smartredis\Exception;
 use perf2k2\smartredis\Structure;
 
-class Record extends Structure
+class StringStructure extends Structure
 {
     public function set($value): void
     {

@@ -6,7 +6,7 @@ namespace perf2k2\smartredis\structures;
 use perf2k2\smartredis\Exception;
 use perf2k2\smartredis\Structure;
 
-class HashMap extends Structure
+class HashMapStructure extends Structure
 {
     public function setAll(string $key, array $data): void
     {
