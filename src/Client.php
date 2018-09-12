@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace perf2k2\smartredis;
 
 use perf2k2\smartredis\structures\HashMapStructure;
+use perf2k2\smartredis\structures\ListStructure;
 use perf2k2\smartredis\structures\StringStructure;
 
 class Client
@@ -28,5 +29,10 @@ class Client
     public function getString(string $name): StringStructure
     {
         return new StringStructure($this->conn, $name);
+    }
+
+    public function getList(string $name): ListStructure
+    {
+        return new ListStructure($this->conn, $name);
     }
 }
