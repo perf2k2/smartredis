@@ -14,6 +14,11 @@ abstract class Structure
         $this->name = $name;
     }
 
+    public function isExists(): bool
+    {
+        return $this->conn->exists($this->name);
+    }
+
     public function clear(): int
     {
         return $this->conn->del($this->name);

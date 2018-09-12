@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace perf2k2\smartredis;
 
 use perf2k2\smartredis\structures\HashMap;
+use perf2k2\smartredis\structures\Record;
 
 class Client
 {
@@ -22,5 +23,10 @@ class Client
     public function getHashMap(string $name): HashMap
     {
         return new HashMap($this->conn, $name);
+    }
+
+    public function getRecord(string $name): Record
+    {
+        return new Record($this->conn, $name);
     }
 }
