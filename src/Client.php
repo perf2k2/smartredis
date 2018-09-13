@@ -21,6 +21,11 @@ class Client
         }
     }
 
+    public function getConnection(): \Redis
+    {
+        return $this->conn;
+    }
+
     public function getHashMap(string $name): HashMapStructure
     {
         return new HashMapStructure($this->conn, $name);
